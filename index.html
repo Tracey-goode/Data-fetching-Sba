@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marvel Characters</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="./SBA.mjs"></script>
 </head>
-    
+
 <body>
     <h1>Marvel Characters</h1>
-    <div id="results">Loading...</div>    
+    <div id="Characters">Loading...</div>
 
+    <script>
+        fetch('/api/marvel')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('characters');
+                container.innerHTML = data.data.results.map(char =>
+            `<div>
+             <h3>${char.name}</h3>
+             <img src="${char.thumbnail.path}.${char.thumbnail.extension}" width="100">
+           </div>`
+                ).join('');
+            })
+            .catch(err => {
+                document.getElementById('characters').innerText = 'Error loading characters.';
+                console.error(err);
+            });
+    </script>
 </body>
+
 </html>
