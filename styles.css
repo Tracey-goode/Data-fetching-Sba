@@ -1,3 +1,4 @@
+/* Reset some default styles */
 body,
 html {
     margin: 0;
@@ -9,35 +10,49 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Vertical centering */
     align-items: center;
+    /* Horizontal centering */
     min-height: 100vh;
     background-color: #f0f0f0;
     text-align: center;
 }
 
-#characters {
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+#bs-text {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
-    max-width: 800px;
+    align-items: center;
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
 }
 
-#characters div {
-    background: #eee;
-    border-radius: 6px;
-    padding: 10px;
-    width: 150px;
+#bs-text p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
 }
 
-#characters img {
-    border-radius: 4px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

@@ -3,32 +3,22 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Marvel Characters</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="./SBA.mjs"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate BS Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Marvel Characters</h1>
-    <div id="Characters">Loading...</div>
+    <div id="app">
+        <h1>Corporate BS Generator</h1>
+        <div id="bs-text">
+            <p id="generated-bs">Loading corporate BS...</p>
+            <button id="generate-bs">Generate New BS</button>
+        </div>
+    </div>
 
-    <script>
-        fetch('/api/marvel')
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById('characters');
-                container.innerHTML = data.data.results.map(char =>
-            `<div>
-             <h3>${char.name}</h3>
-             <img src="${char.thumbnail.path}.${char.thumbnail.extension}" width="100">
-           </div>`
-                ).join('');
-            })
-            .catch(err => {
-                document.getElementById('characters').innerText = 'Error loading characters.';
-                console.error(err);
-            });
-    </script>
+    <!-- Link to external JS -->
+    <script src="script.js"></script>
 </body>
 
 </html>
