@@ -22,6 +22,19 @@ res.on('data', (chunk) => {
     data += chunk;
 });
 
+res.on('end', () => {
+    const json = JSON.parse(data);
+    const characters = json.data.results
+
+    console.log('Marvel Characters:');
+    characters.forEach((char) => {
+      console.log(`- ${char.name}`);
+    });
+  });
+
+}).on('error', (err) => {
+  console.error('Error fetching data:', err.message);
+});
 
 async function fetchMarvelCharacters() {
     try {
