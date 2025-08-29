@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 // Marvel API keys
 const publicKey = '864a968f01763b15293bd28f79504e64';
-const privateKey = 'your_private_key_here';
+const privateKey = '8246929d53aca8824778f9bb52c426e0c4b26304';
 
 // Create the timestamp and hash
 const ts = new Date().getTime().toString();
@@ -12,6 +12,15 @@ const hash = crypto
     .update(ts + privateKey + publicKey)
     .digest('hex');
 
+    // marvel seems to have very specific ways i need to request data
+const url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=5`;
+
+https.get(url, (res) => {
+    let data = '';
+
+res.on('data', (chunk) => {
+    data += chunk;
+});
 
 
 async function fetchMarvelCharacters() {
